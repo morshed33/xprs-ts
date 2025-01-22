@@ -1,0 +1,52 @@
+{
+  "name": "exprs-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "S M Morshed",
+    "email": "ac3m0r@gmail.com",
+    "url": "https://github.com/morshed33"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morshed33/xprs-ts.git"
+  }, 
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc --build",
+    "dev": "ts-node-dev ./src/index.ts",
+    "start": "node ./dist/src/index.js"
+  },
+  "dependencies": {
+    "config": "^3.3.12",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
+    "dotenv-flow": "^4.1.0",
+    "express": "^4.21.2",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "postgres": "^3.4.5",
+    "reflect-metadata": "^0.2.2",
+    "uuid": "^11.0.5",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.5",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.10.7",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
