@@ -16,7 +16,10 @@
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc --build",
     "dev": "ts-node-dev ./src/index.ts",
-    "start": "node ./dist/src/index.js"
+    "start": "node ./dist/src/index.js",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up --build",
+    "docker-down": "docker compose -f docker-compose.dev.yml down"
+
   },
   "dependencies": {
     "@prisma/client": "6.2.1",
