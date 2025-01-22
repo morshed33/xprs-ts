@@ -8,7 +8,6 @@ import globalErrorHandler from "../middlewares/globalErrorHandler";
 import notFoundHandler from "../middlewares/notFoundHandler";
 import ApiResponse from "../shared/api-handlers/ApiResponse";
 import loadAllModules from "./modules";
-import prisma from "../shared/prisma";
 
 class AppFactory {
   static createApp(): Application {
@@ -24,8 +23,7 @@ class AppFactory {
     app.use(requestLogger);
 
     app.get('/', async (req: Request, res: Response) => {
-      const users = await prisma.user.findMany();
-      ApiResponse(res, StatusCodes.OK, 'Welcome to the XPRS-TS API!', users);
+      ApiResponse(res, StatusCodes.OK, 'Welcome to the XPRS-TS API!');
     });
 
     const router = express.Router();
