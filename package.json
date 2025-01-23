@@ -17,6 +17,7 @@
     "build": "npm run clean && tsc --build",
     "dev": "ts-node-dev ./src/index.ts",
     "start": "node ./dist/src/index.js",
+    "migrate": "dotenv -e .env.development -- npx prisma migrate deploy",
     "docker:dev": "docker compose -f docker-compose.dev.yml up --build",
     "docker-down": "docker compose -f docker-compose.dev.yml down"
 
