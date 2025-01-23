@@ -20,7 +20,7 @@
     "generate": "prisma generate dev",
     "migrate": "dotenv -e .env.development -- npx prisma migrate dev",
     "docker:dev": "docker compose  --env-file .env.development  -f docker-compose.dev.yml up --build",
-    "docker-down": "docker compose -f docker-compose.dev.yml down"
+    "docker-down": "docker compose --env-file .env.development  -f docker-compose.dev.yml down"
 
   },
   "dependencies": {
