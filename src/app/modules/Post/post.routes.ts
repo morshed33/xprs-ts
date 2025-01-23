@@ -7,5 +7,6 @@ export default function postRoutes() {
     router.post('/', controller.createPost);
     router.get('/', controller.getAllPosts);
     router.get('/:id', controller.getPostById);
+    router.delete('/:id', controller.softDeletePost);
     return router;
 }

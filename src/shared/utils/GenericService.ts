@@ -38,6 +38,13 @@ class GenericService<T, CreateInput, WhereInput> {
     async findAll(filters?: WhereInput): Promise<T[]> {
         return await this.model.findMany({ where: filters });
     }
+
+    async softDelete(id: string): Promise<T | null> {
+        return await this.model.update({
+            where: { id },
+            data: { isActive: false } as unknown as Partial<T>,
+        });
+    }
 }
 
 export default GenericService;

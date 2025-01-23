@@ -22,6 +22,10 @@ class PostController {
         const post = await this.postService.getById(req.params.id);
         ApiResponse(res, StatusCodes.OK, 'Post retrieved successfully', post);
     });
+    softDeletePost = catchAsync(async (req, res) => {
+        const post = await this.postService.softDelete(req.params.id);
+        ApiResponse(res, StatusCodes.OK, 'Post deleted successfully', post);
+    });
 }
 
 export default PostController;

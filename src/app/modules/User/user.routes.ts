@@ -6,5 +6,6 @@ export default function userRoutes() {
     const controller = new UserController();
     router.post('/', controller.createUser);
     router.get('/', controller.getAllUsers);
+    router.delete('/:id', controller.softDeleteUser);
     return router;
 }
