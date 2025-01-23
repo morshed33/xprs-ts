@@ -5,15 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - '9090:9090'
+      -  "${PORT}:${PORT}"
     volumes:
       - .:/app
       - ./logs:/app/logs
-    environment:
-      - POSTGRES_URL=postgresql://postgres:postgres@postgres:5432/xprs-ts
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=xprs-ts
     env_file:
       - .env.development
     depends_on:
@@ -27,10 +22,6 @@ services:
 
   postgres:
     image: postgres:alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=xprs-ts
     ports:
       - '5432:5432'
     volumes:
