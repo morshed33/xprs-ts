@@ -59,7 +59,7 @@ class Server {
    */
   private async openConnection(expressApp: Application): Promise<ServerDto> {
     return new Promise<ServerDto>((resolve, reject) => {
-      const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
+      const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8000;
 
       // Ensure the port is a valid number
       if (isNaN(port)) {
