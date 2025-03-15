@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from "express";
+import express, { type Application, type Request, type Response } from "express";
 import dotenv from 'dotenv-flow';
 import logger from '../shared/logger/LoggerManager';
 import addRequestId from "../middlewares/addRequestId";
@@ -9,32 +9,34 @@ import notFoundHandler from "../middlewares/notFoundHandler";
 import ApiResponse from "../shared/api-handlers/ApiResponse";
 import loadAllModules from "./modules";
 
-class AppFactory {
-  static createApp(): Application {
-    logger.info('Creating app...');
+/**
+ * Creates and configures an Express application with all middleware and routes
+ * @returns {Application} The configured Express application
+ */
+export function createApp(): Application {
+  logger.info('Creating app...');
 
-    dotenv.config();
-    const app = express();
+  dotenv.config();
+  const app = express();
 
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-    app.use(addRequestId);
-    app.use(requestLogger);
+  app.use(addRequestId);
+  app.use(requestLogger);
 
-    app.get('/', async (req: Request, res: Response) => {
-      ApiResponse(res, StatusCodes.OK, 'Welcome to the XPRS-TS API!');
-    });
+  app.get('/', async (_req: Request, res: Response) => {
+    ApiResponse(res, StatusCodes.OK, 'Welcome to the XPRS-TS API!');
+  });
 
-    const router = express.Router();
-    loadAllModules(router);
-    app.use('/api/v1', router);
+  const router = express.Router();
+  loadAllModules(router);
+  app.use('/api/v1', router);
 
-    app.all('*', notFoundHandler);
-    globalErrorHandler(app);
+  app.all('*', notFoundHandler);
+  globalErrorHandler(app);
 
-    return app;
-  }
+  return app;
 }
 
-export default AppFactory;
+export default { createApp };
